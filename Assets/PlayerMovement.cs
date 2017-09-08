@@ -1,16 +1,23 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour {
 
 
     public Rigidbody rb;
 
-    public float forwardForce = 2000f;
-    public float sidewaysForce = 500f;
+    public float forwardForce = 1750f;
+    public float sidewaysForce = 1200f;
+    public int scoreSpeed;
+    public Text speedText;
 	
 	// Update is called once per frame
 	void FixedUpdate ()
     {
+        float score = float.Parse(speedText.text.Split(':')[1]);
+        float scoreadd = score * 1.000001f;
+        forwardForce = forwardForce + scoreadd;
 
         rb.AddForce(0, 0, forwardForce * Time.deltaTime);
 
@@ -23,6 +30,5 @@ public class PlayerMovement : MonoBehaviour {
         {
             rb.AddForce(-sidewaysForce * Time.deltaTime, 0, 0);
         }
-
     }
 }

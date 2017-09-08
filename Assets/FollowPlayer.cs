@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FollowPlayer : MonoBehaviour {
 
@@ -11,5 +12,10 @@ public class FollowPlayer : MonoBehaviour {
 
         transform.position = player.position + offset;
 
-	}
+        if (Input.GetKey("r"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+    }
 }
