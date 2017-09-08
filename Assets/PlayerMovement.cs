@@ -9,15 +9,11 @@ public class PlayerMovement : MonoBehaviour {
 
     public float forwardForce = 1750f;
     public float sidewaysForce = 1200f;
-    public int scoreSpeed;
     public Text speedText;
 	
 	// Update is called once per frame
 	void FixedUpdate ()
     {
-        float score = float.Parse(speedText.text.Split(':')[1]);
-        float scoreadd = score * 1.000001f;
-        forwardForce = forwardForce + scoreadd;
 
         rb.AddForce(0, 0, forwardForce * Time.deltaTime);
 

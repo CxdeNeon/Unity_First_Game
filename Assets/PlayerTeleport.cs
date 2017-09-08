@@ -7,13 +7,19 @@ public class PlayerTeleport : MonoBehaviour {
     public Transform player;
     public Text countText;
 
-    public int currentScore;
+    public float currentScore;
     // Update is called once per frame
 
     private void Start()
     {
         currentScore = 0;
-        countText.text = "Score : " + currentScore;
+    }
+
+    private void Update()
+    {
+
+        currentScore = player.position.z;
+        countText.text = "Score : " + currentScore ;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -21,8 +27,8 @@ public class PlayerTeleport : MonoBehaviour {
         if(collision.collider.tag == "Player")
         {
             player.position = destination.position;
-            currentScore = currentScore + 1;
-            countText.text = "Score : " + currentScore;
+
+            countText.text = "Score : " + player.position.z;
         }
     }
 }
